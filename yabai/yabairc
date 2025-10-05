@@ -18,7 +18,7 @@ $HOME/.config/yabai/create_spaces.sh
 # Make mac menubar transparent
 #yabai -m config menubar_opacity 0.0
 
-yabai -m config external_bar               all:49:0     \
+yabai -m config external_bar               all:35:0     \
                 window_border              on           \
                 mouse_follows_focus        off          \
                 focus_follows_mouse        off          \

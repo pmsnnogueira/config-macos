@@ -3,3 +3,5 @@ zed/*
 !zed/settings.json
 iterm2/
 raycast/
+
+*.save
