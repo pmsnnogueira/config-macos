@@ -1,0 +1,19 @@
+[general]
+import = [
+	"~/.config/alacritty/themes/themes/coolnight.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal.family = "MesloLGS Nerd Font Mono"
+size = 10
+
+[window]
+decorations="Buttonless" #Remove close button and minimize
+opacity=0.8
+blur = true
+option_as_alt = "None"
+
+
