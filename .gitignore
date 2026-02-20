@@ -5,3 +5,9 @@ iterm2/
 raycast/
 htop/
 *.save
+
+.DS_Store
+
+.mic_volume
+
+configstore
