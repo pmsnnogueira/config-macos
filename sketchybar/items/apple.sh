@@ -1,14 +1,21 @@
 #!/bin/bash
 
 POPUP_OFF="sketchybar --set apple.logo popup.drawing=off"
-POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
+POPUP_CLICK_SCRIPT="sketchybar --set volume_icon popup.drawing=off --set \$NAME popup.drawing=toggle; $PLUGIN_DIR/popup_autoclose.sh apple.logo"
 
 apple_logo=(
   icon=$APPLE
   icon.font="$FONT:Black:16.0"
-  icon.color=$WHITE
-  padding_right=15
+  icon.color=$ICON_COLOR
+  icon.padding_left=$ICON_ONLY_PADDING
+  icon.padding_right=$ICON_ONLY_PADDING
+  padding_left=$PILL_GAP
+  padding_right=$PILL_GAP
   label.drawing=off
+  background.drawing=$ITEM_PILL_DRAWING
+  background.color=$BACKGROUND_1
+  background.border_color=$BACKGROUND_2
+  background.border_width=2
   click_script="$POPUP_CLICK_SCRIPT"
 )
 

@@ -18,48 +18,19 @@ $HOME/.config/sketchybar/helper/helper $HELPER > /dev/null 2>&1 &
 # Unload the macOS on screen indicator overlay for volume change
 launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
 
-# Setting up the general bar appearance of the bar
-bar=(
-  height=30
-  color=$BAR_COLOR
-  shadow=off
-  position=top
-  sticky=on
-  padding_right=10
-  padding_left=10
-  corner_radius=20
-  y_offset=10
-  margin=10
-  blur_radius=20
-  notch_width=0
-)
+# Watches the system appearance (Dark Mode) and reloads automatically when
+# SKETCHYBAR_THEME="auto". Only one instance ever runs, even across reloads.
+THEME_WATCHER_PID_FILE="/tmp/sketchybar_theme_watcher.pid"
+if [ -f "$THEME_WATCHER_PID_FILE" ]; then
+  kill "$(cat "$THEME_WATCHER_PID_FILE")" > /dev/null 2>&1
+fi
+"$PLUGIN_DIR/theme_watcher.sh" &
+echo $! > "$THEME_WATCHER_PID_FILE"
 
-sketchybar --bar "${bar[@]}"
-
-# Setting up default values
-defaults=(
-  updates=when_shown
-  icon.font="$FONT:Bold:14.0"
-  icon.color=$ICON_COLOR
-  icon.padding_left=$PADDINGS
-  icon.padding_right=$PADDINGS
-  label.font="$FONT:Semibold:13.0"
-  label.color=$LABEL_COLOR
-  label.padding_left=$PADDINGS
-  label.padding_right=$PADDINGS
-  padding_right=$PADDINGS
-  padding_left=$PADDINGS
-  background.height=30
-  background.corner_radius=9
-  popup.background.border_width=2
-  popup.background.corner_radius=9
-  popup.background.border_color=$POPUP_BORDER_COLOR
-  popup.background.color=$POPUP_BACKGROUND_COLOR
-  popup.blur_radius=20
-  popup.background.shadow.drawing=on
-)
-
-sketchybar --default "${defaults[@]}"
+# Setting up the general bar appearance and default values
+# (BAR_ARGS and DEFAULT_ARGS come from the active theme, see colors.sh)
+sketchybar --bar "${BAR_ARGS[@]}"
+sketchybar --default "${DEFAULT_ARGS[@]}"
 
 # Left
 source "$ITEM_DIR/apple.sh"

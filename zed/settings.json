@@ -7,7 +7,42 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "diff_view_style": "split",
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "icon_theme": "VSCode Icons for Zed (Dark NestJS)",
+  "project_panel": {
+    "dock": "left"
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    }
+  },
+  "session": {
+    "trust_all_worktrees": false
+  },
   "agent": {
+    "dock": "right",
     "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",

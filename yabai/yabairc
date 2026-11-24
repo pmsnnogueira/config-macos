@@ -1,9 +1,10 @@
 # Unload the macOS WindowManager Process
 launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
 
+# load scripting
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-
 sudo yabai --load-sa
+
 
 #signals
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"

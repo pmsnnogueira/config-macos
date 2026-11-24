@@ -11,3 +11,11 @@ htop/
 .mic_volume
 
 configstore
+
+*
+
+!sketchybar
+!alacritty
+!yabai
+!zed
+!scripts
